@@ -14,6 +14,9 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        Passport::routes();
+
+        if (class_exists(Passport::class) && method_exists(Passport::class, 'routes')) {
+            Passport::routes();  
+        }
     }
 }

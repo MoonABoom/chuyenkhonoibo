@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\ProductController;
+use App\Http\Controllers\Api\V1\InventoryTransferController;
+
 
 Route::prefix('v1')->group(function () {
     // Public API: Không yêu cầu xác thực
@@ -39,5 +41,7 @@ Route::prefix('v1')->group(function () {
         //Product
         Route::post('/product/add', [ProductController::class, 'addProduct']);
         Route::get('/product/view/{id}', [ProductController::class, 'show']);
+
+        Route::post('/inventory/transfer/internal', [InventoryTransferController::class, 'internalTransfer']);
     });
 });
