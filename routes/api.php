@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\ProductController;
 use App\Http\Controllers\Api\V1\InventoryTransferController;
+use App\Http\Controllers\Api\V1\RepairTransferController;
 
 
 Route::prefix('v1')->group(function () {
@@ -43,5 +44,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/product/view/{id}', [ProductController::class, 'show']);
 
         Route::post('/inventory/transfer/internal', [InventoryTransferController::class, 'internalTransfer']);
+    
+        Route::post('/transfer/repair', [RepairTransferController::class, 'transferForRepair']);
     });
 });

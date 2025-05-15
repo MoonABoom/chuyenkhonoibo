@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventory_transfers', function (Blueprint $table) {
+        Schema::create('repair_transfer_items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('from_warehouse_id')->nullable();
-            $table->unsignedBigInteger('to_warehouse_id')->nullable();
+            $table->unsignedBigInteger('repair_transfer_id');
+            $table->unsignedBigInteger('product_id');
+            $table->decimal('quantity', 10, 2);
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventory_transfers');
+        Schema::dropIfExists('repair_transfer_items');
     }
 };

@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventory_transfers', function (Blueprint $table) {
+        Schema::create('repair_transfers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('from_warehouse_id')->nullable();
-            $table->unsignedBigInteger('to_warehouse_id')->nullable();
+            $table->unsignedBigInteger('warehouse_id');
+            $table->string('reason')->nullable(); // lý do sửa có thể bỏ trống
             $table->timestamps();
-        });
+    });
     }
 
     /**
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventory_transfers');
+        Schema::dropIfExists('repair_transfers');
     }
 };
