@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\ProductController;
 use App\Http\Controllers\Api\V1\InventoryTransferController;
 use App\Http\Controllers\Api\V1\RepairTransferController;
+use App\Http\Controllers\Api\V1\DiscardTransferController;
 
 
 Route::prefix('v1')->group(function () {
@@ -46,5 +47,7 @@ Route::prefix('v1')->group(function () {
         Route::post('/inventory/transfer/internal', [InventoryTransferController::class, 'internalTransfer']);
     
         Route::post('/transfer/repair', [RepairTransferController::class, 'transferForRepair']);
+
+        Route::post('/transfer/discard', [DiscardTransferController::class, 'discard']);
     });
 });
